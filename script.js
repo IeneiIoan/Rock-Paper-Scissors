@@ -15,16 +15,17 @@ let getComputerChoice = () => {
     return computerChoice;
 }
 
-let fight = (playerSelectionRandom) => {
+
+let fight = (playerSelection) => {
     let computer = getComputerChoice();
 
     const computerSelection = computer.toLowerCase();
 
     console.log(computer);
 
-    playerSelectionRandom = prompt("Please introduce the choice you want to battle with: ");
+    const playerSelectionRandom = prompt("Please introduce the choice you want to battle with: ");
 
-    const playerSelection = playerSelectionRandom.toLowerCase();
+    playerSelection = playerSelectionRandom.toLowerCase();
 
     if (playerSelection === computerSelection) {
         return "It's a draw!";
@@ -52,13 +53,15 @@ let playRound = () => {
 
     for (let i = 0; i < 5; i++) {
         let a = fight();
+
         if ((a == "You win! Rock beats Scissors!") || (a == "You win! Paper beats Rock!") || (a == "You win! Scissors beats Paper!")) {
             win++;
         } else if ((a == "You lose! Paper beats Rock!") || (a == "You lose! Scissors beats Paper!") || (a == "You lose! Rock beats Scissors!")) {
             lose++;
         } else {
-            console.log("Nothing");
+            console.log("It's a draw!");
         }
+
         console.log(win);
         console.log(lose);
     }

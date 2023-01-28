@@ -1,13 +1,70 @@
+let rock = document.getElementById("rock");
+let paper = document.getElementById("paper");
+let scissors = document.getElementById("scissors");
+
+let createDivAndRemove= (a) => {
+
+    const container = document.getElementsByClassName('container');
+
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = a;
+
+    container[0].appendChild(content);
+
+    let remove = document.getElementById("remove");
+
+    remove.addEventListener("click", () => {
+    content.remove();
+    });
+}
+
+let displayWins = (win) => {
+    const container = document.getElementsByClassName('container');
+
+    let win1 = win;
+
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = win1;
+        
+    container[0].appendChild(content);
+
+    let remove = document.getElementById("remove");
+        
+    remove.addEventListener("click", () => {
+        content.remove(); 
+    });
+}
+
+let displayLose = (lose) => {
+    const container = document.getElementsByClassName('container');
+            
+    let lose1 = lose;
+
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = lose1;
+            
+    container[0].appendChild(content);
+
+    let remove = document.getElementById("remove");
+        
+    remove.addEventListener("click", () => {
+        content.remove(); 
+    });
+}
+
 let getComputerChoice = () => {
     let randomComputerChoice = Math.random();
     let computerChoice = "";
 
     if (randomComputerChoice <= 0.33) {
-        computerChoice = "Rock";
+        computerChoice = "rock";
     } else if (randomComputerChoice > 0.33 && randomComputerChoice <= 0.66) {
-        computerChoice = "Paper";
+        computerChoice = "paper";
     } else if (randomComputerChoice > 0.66) {
-        computerChoice = "Scissors";
+        computerChoice = "scissors";
     } else {
         computerChoice = "Error";
     }
@@ -15,17 +72,11 @@ let getComputerChoice = () => {
     return computerChoice;
 }
 
-
 let fight = (playerSelection) => {
-    let computer = getComputerChoice();
 
-    const computerSelection = computer.toLowerCase();
+    let computerSelection = getComputerChoice();
 
-    console.log(computer);
-
-    const playerSelectionRandom = prompt("Please introduce the choice you want to battle with: ");
-
-    playerSelection = playerSelectionRandom.toLowerCase();
+    createDivAndRemove("Computer choice: " + computerSelection);
 
     if (playerSelection === computerSelection) {
         return "It's a draw!";
@@ -47,32 +98,87 @@ let fight = (playerSelection) => {
 }
 
 let playRound = () => {
-
-    let win = 0;
     let lose = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let a = fight();
+    let win = 0;
+            
+    rock.addEventListener("click", () => {
+        playerSelection = "rock";
+        let a = fight(playerSelection);
+        
+        createDivAndRemove();
 
         if ((a == "You win! Rock beats Scissors!") || (a == "You win! Paper beats Rock!") || (a == "You win! Scissors beats Paper!")) {
             win++;
         } else if ((a == "You lose! Paper beats Rock!") || (a == "You lose! Scissors beats Paper!") || (a == "You lose! Rock beats Scissors!")) {
             lose++;
-        } else {
-            console.log("It's a draw!");
         }
 
-        console.log(win);
-        console.log(lose);
-    }
+        displayWins(win);
+        displayLose(lose);
+        
+        if (win === 5) {
+            win = lose = 0;
+            createDivAndRemove("You win!");
+            alert("Click on Remove to play again!");
+        } else if (lose === 5) {
+            win = lose = 0;
+            createDivAndRemove("You lose!");
+            alert("Click on Remove to play again!");
+        }
+    });
 
-    if (win > lose) {
-        console.log("You win!");
-    } else if (win < lose) {
-        console.log("You lose!")
-    } else if (win = lose){
-        console.log("It's a draw")
-    }
+    paper.addEventListener("click", () => {
+        playerSelection = "paper";
+        let a = fight(playerSelection);
+    
+        createDivAndRemove();
+
+        if ((a == "You win! Rock beats Scissors!") || (a == "You win! Paper beats Rock!") || (a == "You win! Scissors beats Paper!")) {
+            win++;
+        } else if ((a == "You lose! Paper beats Rock!") || (a == "You lose! Scissors beats Paper!") || (a == "You lose! Rock beats Scissors!")) {
+            lose++;
+        }
+
+        displayWins(win);
+        displayLose(lose);
+        
+        if (win === 5) {
+            win = lose = 0;
+            createDivAndRemove("You win!");
+            alert("Click on Remove to play again!");
+        } else if (lose === 5) {
+            win = lose = 0;
+            createDivAndRemove("You lose!");
+            alert("Click on Remove to play again!");
+        }
+    });
+    
+
+scissors.addEventListener("click", () => {
+    playerSelection = "scissors";
+        let a = fight(playerSelection);
+    
+        createDivAndRemove();
+
+        if ((a == "You win! Rock beats Scissors!") || (a == "You win! Paper beats Rock!") || (a == "You win! Scissors beats Paper!")) {
+            win++;
+        } else if ((a == "You lose! Paper beats Rock!") || (a == "You lose! Scissors beats Paper!") || (a == "You lose! Rock beats Scissors!")) {
+            lose++;
+        }
+
+        displayWins(win);
+        displayLose(lose);
+        
+        if (win === 5) {
+            win = lose = 0;
+            createDivAndRemove("You win!");
+            alert("Click on Remove to play again!");
+        } else if (lose === 5) {
+            win = lose = 0;
+            createDivAndRemove("You lose!");
+            alert("Click on Remove to play again!");
+        }
+    });
 
 }
 

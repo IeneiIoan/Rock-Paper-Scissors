@@ -1,5 +1,3 @@
-// modify
-
 let rock = document.getElementById("rock");
 let paper = document.getElementById("paper");
 let scissors = document.getElementById("scissors");
@@ -123,16 +121,19 @@ let playRound = () => {
 
         displayWins(win);
         displayLose(lose);
-        createDivAndRemove(`Press the button "Remove" to update!`);    
         
-        if (win === 5) {
-            win = lose = 0;
-            createDivAndRemove("You won!");
-            createDivAndRemove("Click on Remove to play again!");
-        } else if (lose === 5) {
-            win = lose = 0;
-            createDivAndRemove("You lost!");
-            createDivAndRemove("Click on Remove to play again!");
+        if ((win === 5) || (lose === 5)) {
+            if (win === 5) {
+                win = lose = 0;
+                createDivAndRemove("You won!");
+                createDivAndRemove(`Click on "Remove" to play again!`);
+            } else if (lose === 5) {
+                win = lose = 0;
+                createDivAndRemove("You lost!");
+                createDivAndRemove(`Click on "Remove" to play again!`);
+            }
+        } else {
+            createDivAndRemove(`Press the button "Remove" to update!`);
         }
     });
 
@@ -150,16 +151,19 @@ let playRound = () => {
 
         displayWins(win);
         displayLose(lose);
-        createDivAndRemove(`Press the button "Remove" to update!`);
         
-        if (win === 5) {
-            win = lose = 0;
-            createDivAndRemove("You won!");
-            createDivAndRemove("Click on Remove to play again!");
-        } else if (lose === 5) {
-            win = lose = 0;
-            createDivAndRemove("You lost!");
-            createDivAndRemove("Click on Remove to play again!");
+        if ((win === 5) || (lose === 5)) {
+            if (win === 5) {
+                win = lose = 0;
+                createDivAndRemove("You won!");
+                createDivAndRemove(`Click on "Remove" to play again!`);
+            } else if (lose === 5) {
+                win = lose = 0;
+                createDivAndRemove("You lost!");
+                createDivAndRemove(`Click on "Remove" to play again!`);
+            }
+        } else {
+            createDivAndRemove(`Press the button "Remove" to update!`);
         }
     });
     
@@ -178,16 +182,19 @@ scissors.addEventListener("click", () => {
 
         displayWins(win);
         displayLose(lose);
-        createDivAndRemove(`Press the button "Remove" to update!`);
         
-        if (win === 5) {
-            win = lose = 0;
-            createDivAndRemove("You won!");
-            createDivAndRemove("Click on Remove to play again!");
-        } else if (lose === 5) {
-            win = lose = 0;
-            createDivAndRemove("You lost!");
-            createDivAndRemove("Click on Remove to play again!");
+        if ((win === 5) || (lose === 5)) {
+            if (win === 5) {
+                win = lose = 0;
+                createDivAndRemove("You won!");
+                createDivAndRemove(`Click on "Remove" to play again!`);
+            } else if (lose === 5) {
+                win = lose = 0;
+                createDivAndRemove("You lost!");
+                createDivAndRemove(`Click on "Remove" to play again!`);
+            }
+        } else {
+            createDivAndRemove(`Press the button "Remove" to update!`);
         }
     });
 }
